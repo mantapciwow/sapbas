@@ -1,0 +1,172 @@
+<mvc:View xmlns:tnt="sap.tnt" 
+    controllerName="reportcustomer.controller.Overview"
+    xmlns:mvc="sap.ui.core.mvc" 
+    xmlns:core="sap.ui.core"
+    displayBlock="true"
+    xmlns="sap.m">
+    <Page id="page" title="{i18n>title}">
+        <headerContent>
+            <OverflowToolbar >
+                <ToolbarSpacer/>
+                <Button icon="sap-icon://add" press="onOpenViewDialog"></Button>
+            </OverflowToolbar>
+        </headerContent>
+        <content>
+            <ToolbarSpacer/>
+            <Button text="Sort by Gender" press=".onSort"></Button>
+            <Table id="customerTable" headerText="Header" width="auto" 
+                items= "{ 
+                    path:'/CustomersSet' ,
+                    sorter: { 
+                        path: 'Gendertext'
+                        }
+                    }">
+                <columns>
+                    <Column><header><Text text="Customer ID"></Text></header></Column>
+                    <Column><header><Text text="Customer Name"></Text></header></Column>
+                    <Column id="jeniskelamin"><header><Text text="Gender"></Text></header></Column>
+                    <Column><header><Text text="Age"></Text></header></Column>
+                    <Column><header><Text text="Email"></Text></header></Column>
+                    <Column><header><Text text="Address"></Text></header></Column>
+                </columns>
+                <items>
+                <ColumnListItem>
+                    <cells>
+                        <Text text="{CustomerD}"></Text>
+                        <Text text="{NameFirst} {NameLast}"></Text>
+                        <Text text="{Gendertext}"></Text>
+                        <Text text="{Agex}"></Text>
+                        <Text text="{Email}"></Text>
+                        <Text text="{AddressInfo}"></Text>
+                    </cells>
+                </ColumnListItem>
+                </items>
+            </Table>
+            
+            <Panel id="panelCustomer" class="sapUiResponsiveMargin" width="auto" expandable="true" expanded="false" headerText="Add Customer">
+                <content>
+                    <Label text="Customer ID"></Label>
+                    <Input type="Number" id="_inputCustomerID" class="sapUiSmallMarginBottom"></Input>
+                    <Label text="First Name"></Label>
+                    <Input type="Text" id="_inputFirstName" class="sapUiSmallMarginBottom"></Input>
+                    <Label text="Last Name" ></Label>
+                    <Input type="Text" id="_inputLastName" class="sapUiSmallMarginBottom"></Input>
+                    <Label text="Gender"></Label>
+                    <Input type="Text" id="_inputCustomerGender" class="sapUiSmallMarginBottom"></Input>
+                    <Label text="Age"></Label>
+                    <Input type="Text" id="_inputCustomerAge" class="sapUiSmallMarginBottom"></Input>
+                    <Label text="Email"></Label>
+                    <Input type="Text" id="_inputCustomerEmail" class="sapUiSmallMarginBottom"></Input>
+                    <Label text="Address"></Label>
+                    <Input type="Text" id="_inputCustomerAddress" class="sapUiSmallMarginBottom"></Input>
+                    <Label text="Country"></Label>
+                    <Input type="Text" id="_inputCustomerCountry" class="sapUiSmallMarginBottom"></Input>
+                    
+                    <Toolbar height="50px" >
+                        <ToolbarSpacer ></ToolbarSpacer>
+                        <Button type="Accept" text="Save" press=".onSaveCustomer"></Button>
+                    </Toolbar>
+                </content>            
+            </Panel>
+        </content>    
+            
+         <content>   
+            <Table 
+                id="customerList"
+                headerText="Customer Table" 
+                class="sapUiResponsiveMargin" 
+                items="{ 
+                    path:'/CustomersSet',
+                    parameters:{
+                        $count: true,
+						$$updateGroupId : 'customerGroup'},
+                    sorter:{ 
+                        path: 'CustomerD',
+                        descending: false }
+                    }"
+                
+                width="auto">
+                              
+                
+            <!-- <headerToolbar>
+                <OverflowToolbar>
+                <ToolbarSpacer/>
+                    <Button 
+                        icon="sap-icon://add"
+                        text="Add Customer"
+                        press=".onTambahCustomer"
+                        ></Button>
+                    <Button
+						icon="sap-icon://delete"
+						press=".onDelete">
+						<layoutData>
+							<OverflowToolbarLayoutData priority="NeverOverflow"/>
+						</layoutData>
+					</Button>
+                </OverflowToolbar>
+            </headerToolbar> -->
+            <columns>
+								<Column id="idCustomer">
+									<Text text="Customer ID"/>
+								</Column>
+                                <Column id="namaCustomer">
+									<Text text="Customer Name"/>
+								</Column>
+                                <Column id="jenisKelamin">
+									<Text text="Gender"/>
+								</Column>
+                                <Column id="umur">
+									<Text text="Age"/>
+								</Column>
+                                <Column id="emailCustomer">
+									<Text text="Email"/>
+								</Column>
+                                <Column id="alamat">
+									<Text text="Address"/>
+				                </Column>
+                                <Column> 
+                                    <Text text=""/>
+                                </Column>
+			</columns>
+            
+            <items>
+				<ColumnListItem>
+					<cells>
+                        <Text text="{CustomerD}" ></Text>
+					</cells>
+                    <cells>
+						<Input value="{NameFirst} {NameLast}"  editable="false"/>
+					</cells>
+                    <cells>
+						<Input value="{Gendertext}"  editable="false"/>
+					</cells>
+                    <cells>
+						<Input value="{Agex}"  editable="false"/>
+					</cells>
+                    <cells>
+						<Input value="{Email}"  editable="false"/>
+					</cells>
+                    <cells>
+						<Input value="{AddressInfo}"  editable="false"/>
+					</cells>
+                    <cells>
+                    <HBox>
+                        <Button icon="sap-icon://edit" text="Edit" class="sapUiTinyMarginEnd" press=".onEdit"></Button>
+                        <Button icon="sap-icon://delete" text="Delete" type="Reject" press=".onDelete"></Button>
+                    </HBox>
+                    </cells>
+				</ColumnListItem>
+			</items>				
+            </Table>
+        </content>
+
+        <footer>
+			<Toolbar visible="{App>/hasUIChanges}">
+				<ToolbarSpacer/>
+			</Toolbar>
+		</footer>
+                    
+    </Page>
+
+
+</mvc:View>

@@ -1,0 +1,60 @@
+<core:FragmentDefinition
+    xmlns = "sap.m"
+    xmlns:f = "sap.ui.layout.form"
+    xmlns:mvc = "sap.ui.core.mvc"
+    xmlns:core = "sap.ui.core">
+    <Dialog id="createDialog" title="Add Customer" contentWidth="auto" contentHeight="auto">
+        <content>
+            <VBox id="vboxDialog" class="sapUiSmallMargin">
+            <Text text="This is Dialog"></Text>
+            <f:SimpleForm id="addCustomerForm" editable="true" layout="ColumnLayout">
+                <f:toolbar>
+                    <Toolbar id="toolbarAddCustomer">
+                        <Title text="Add Customer"></Title>
+                    </Toolbar>
+                </f:toolbar>
+                <f:content>
+                    <core:Title text="Masukkan Data Customer"/>
+                    <Label text="Customer ID"></Label>
+                    <Input id="inputCustomerID" enabled="true"></Input>
+                    <Label text="First Name"></Label>
+                    <Input id="inputFirstName" enabled="true"></Input>
+                    <Label text="Last Name"></Label>
+                    <Input id="inputLastName" enabled="true"></Input>
+                    <Label text="Gender"></Label>
+                    <ComboBox > <core:Item text="{oGender}" ></core:Item> </ComboBox>
+                    <Label text="Age"></Label>
+                    <Input id="inputAge" enabled="true"></Input>
+                    <Label text="Email"></Label>
+                    <Input id="inputEmail" enabled="true"></Input>
+                    <Label text="Address"></Label>
+                    <Input id="inputAddress" enabled="true"></Input>
+                </f:content>
+            </f:SimpleForm>
+            </VBox>
+        </content>
+        <footer>
+            <Toolbar>
+                <content>
+                <ToolbarSpacer/>
+                <Button type="Accept" text="Save" press=".onButtonSaveCustomer"/>
+                </content>
+            </Toolbar>
+        </footer>
+        <!-- <Panel id="panelCustomer" headerText="Add Customer" width="auto" >
+            <content>
+                <f:SimpleForm id="formCustomer" >
+                              <f:toolbar>
+            <Toolbar>
+              <content>
+                <ToolbarSpacer/>
+                <Button icon="sap-icon://create" text="{i18n>newCustomerButtonText}" press=".onSave" />
+              </content>
+            </Toolbar>
+          </f:toolbar>
+
+                </f:SimpleForm>
+            </content>
+        </Panel> -->
+    </Dialog>
+</core:FragmentDefinition>
