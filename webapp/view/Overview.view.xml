@@ -2,6 +2,7 @@
     controllerName="reportcustomer.controller.Overview"
     xmlns:mvc="sap.ui.core.mvc" 
     xmlns:core="sap.ui.core"
+    xmlns:t="sap.ui.table"
     displayBlock="true"
     xmlns="sap.m">
     <Page id="page" title="{i18n>title}">
@@ -13,7 +14,7 @@
         </headerContent>
         <content>
             <ToolbarSpacer/>
-            <Button text="Sort by Gender" press=".onSort"></Button>
+            <Button text="Sorting Button" press=".onSort"></Button>
             <Table id="customerTable" headerText="Header" width="auto" 
                 items= "{ 
                     path:'/CustomersSet' ,
@@ -159,6 +160,24 @@
 			</items>				
             </Table>
         </content>
+
+
+        <!-- table with sap.ui.table -->
+        <!-- <content>
+            <t:Table 
+            id="customerTable2"
+            selectionMode="MultiToggle"
+            rows="{
+                    path: '/CustomersSet'
+                    }">
+                <t:columns>
+                    <t:Column name="Customer Id" >
+                        <Label text="Customerrr"/>
+                        <Text text="{CustomerD}" />
+                    </t:Column>
+                </t:columns>
+            </t:Table>
+        </content> -->
 
         <footer>
 			<Toolbar visible="{App>/hasUIChanges}">

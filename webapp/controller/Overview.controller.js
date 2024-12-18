@@ -211,6 +211,8 @@ sap.ui.define([
       // }
 
       // ===============================================================================
+
+      
       onEdit: function (oEvent) {
         var oModel = this.getOwnerComponent().getModel();
         var aInput = oEvent.getSource().getParent().getParent().getCells().filter(function (oCell) { return oCell instanceof sap.m.Input; });
@@ -238,7 +240,9 @@ sap.ui.define([
           oModel.update(sPath, oUpdatedData, {
             success: function () {
               sap.m.MessageToast.show("Customer updated successfully!");
-            },
+              var oRefresh = this.byId("customerTable");
+              oRefresh.getBinding("items").refresh();
+            }.bind(this),
             error: function () {
               sap.m.MessageToast.show("Error updating customer.");
             }
